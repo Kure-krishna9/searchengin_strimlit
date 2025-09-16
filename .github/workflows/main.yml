@@ -1,1 +1,23 @@
+name: Sync to Hugging face hub
+on:
+  push:
+    branches: [main]
+    
+  # to run this workflow manually from the action tab
+  workflow_dispatch:
 
+jobs:
+  sync-to-hub:
+    run-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          fatch-depth: 0
+          lfs: true
+      - name: push to hub
+        env:
+          Hf_TOKEN:${{secrets.HF_TOKEN}}
+        run: git push https://HF_USERNAME:$HF_TOKEN@huggingface.co/spaces/HF_USERNAME
+
+  
+      
