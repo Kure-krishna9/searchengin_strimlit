@@ -19,6 +19,7 @@
 #           HF_TOKEN: ${{secrets.HF_TOKEN}}
 #         run: git push https://Shrikrushnakure:$HF_TOKEN@huggingface.co/spaces/Shrikrushnakure/sk_search_enging
 
+
 name: Sync to Hugging Face Hub
 
 on:
@@ -33,26 +34,19 @@ jobs:
     steps:
       - uses: actions/checkout@v3
         with:
-          fetch-depth: 0  # Corrected
+          fetch-depth: 0
           lfs: true
 
-      - name: Set up Git with your identity
+      - name: Set up Git identity
         run: |
           git config user.name "Kure-krishna9"
           git config user.email "kurekrishna9@gmail.com"
 
-      - name: Pull latest from Hugging Face
+      - name: Sync with Hugging Face
         env:
           HF_TOKEN: ${{ secrets.HF_TOKEN }}
         run: |
-          git push https://Shrikrushnakure:${HF_TOKEN}@huggingface.co/spaces/Shrikrushnakure/sk_search_enging
-
-          # git remote add hf https://Shrikrushnakure:$HF_TOKEN@huggingface.co/spaces/Shrikrushnakure/sk_search_enging
+          git remote add hf https://Shrikrushnakure:${HF_TOKEN}@huggingface.co/spaces/Shrikrushnakure/sk_search_enging
           git pull hf main --rebase
-
-      - name: Push to Hugging Face
-        env:
-          HF_TOKEN: ${{ secrets.HF_TOKEN }}
-        run: |
           git push hf main
 
