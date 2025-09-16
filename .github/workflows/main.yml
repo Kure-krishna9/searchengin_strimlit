@@ -45,7 +45,9 @@ jobs:
         env:
           HF_TOKEN: ${{ secrets.HF_TOKEN }}
         run: |
-          git remote add hf https://Shrikrushnakure:$HF_TOKEN@huggingface.co/spaces/Shrikrushnakure/sk_search_enging
+          git push https://Shrikrushnakure:${HF_TOKEN}@huggingface.co/spaces/Shrikrushnakure/sk_search_enging
+
+          # git remote add hf https://Shrikrushnakure:$HF_TOKEN@huggingface.co/spaces/Shrikrushnakure/sk_search_enging
           git pull hf main --rebase
 
       - name: Push to Hugging Face
