@@ -1,56 +1,56 @@
-# name: Sync to Hugging face hub
-# on:
-#   push:
-#     branches: [main]
-    
-#   # to run this workflow manually from the action tab
-#   workflow_dispatch:
-
-# jobs:
-#   sync-to-hub:
-#     runs-on: ubuntu-latest
-#     steps:
-#       - uses: actions/checkout@v3
-#         with:
-#           fatch-depth: 0
-#           lfs: true
-#       - name: push to hub
-#         env:
-#           HF_TOKEN: ${{secrets.HF_TOKEN}}
-#         run: git push https://Shrikrushnakure:$HF_TOKEN@huggingface.co/spaces/Shrikrushnakure/sk_search_enging
-  
-      
-name: Sync to Hugging Face Hub
-
+name: Sync to Hugging face hub
 on:
   push:
     branches: [main]
+    
+  # to run this workflow manually from the action tab
   workflow_dispatch:
 
 jobs:
   sync-to-hub:
     runs-on: ubuntu-latest
-
     steps:
       - uses: actions/checkout@v3
         with:
-          fetch-depth: 0  # Corrected typo
+          fetch-depth: 0
           lfs: true
-
-      # - name: Set up Git
-      #   run: |
-      #     git config user.name "GitHub Actions"
-      #     git config user.email "actions@github.com"
-
-      - name: Pull latest from Hugging Face
+      - name: push to hub
         env:
-          HF_TOKEN: ${{ secrets.HF_TOKEN }}
-        run: |
-          git remote add hf https://Shrikrushnakure:$HF_TOKEN@huggingface.co/spaces/Shrikrushnakure/sk_search_enging
-          git pull hf main --rebase
+          HF_TOKEN: ${{secrets.HF_TOKEN}}
+        run: git push https://Shrikrushnakure:$HF_TOKEN@huggingface.co/spaces/Shrikrushnakure/sk_search_enging
+  
+      
+# name: Sync to Hugging Face Hub
 
-      - name: Push to Hugging Face
-        env:
-          HF_TOKEN: ${{ secrets.HF_TOKEN }}
-        run: |
-          git push hf main
+# on:
+#   push:
+#     branches: [main]
+#   workflow_dispatch:
+
+# jobs:
+#   sync-to-hub:
+#     runs-on: ubuntu-latest
+
+#     steps:
+#       - uses: actions/checkout@v3
+#         with:
+#           fetch-depth: 0  # Corrected typo
+#           lfs: true
+
+#       # - name: Set up Git
+#       #   run: |
+#       #     git config user.name "GitHub Actions"
+#       #     git config user.email "actions@github.com"
+
+#       - name: Pull latest from Hugging Face
+#         env:
+#           HF_TOKEN: ${{ secrets.HF_TOKEN }}
+#         run: |
+#           git remote add hf https://Shrikrushnakure:$HF_TOKEN@huggingface.co/spaces/Shrikrushnakure/sk_search_enging
+#           git pull hf main --rebase
+
+#       - name: Push to Hugging Face
+#         env:
+#           HF_TOKEN: ${{ secrets.HF_TOKEN }}
+#         run: |
+#           git push hf main
