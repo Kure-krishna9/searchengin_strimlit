@@ -17,7 +17,7 @@ jobs:
       - name: push to hub
         env:
           HF_TOKEN: ${{secrets.HF_TOKEN}}
-        run: git push https://Shrikrushnakure:$HF_TOKEN@huggingface.co/spaces/Shrikrushnakure
+        run: git push https://Shrikrushnakure:$HF_TOKEN@huggingface.co/spaces/Shrikrushnakure/search_engin_llm
 
   
       
